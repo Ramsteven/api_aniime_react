@@ -1,18 +1,21 @@
 import React from 'react'
 
+
+//==========================
+// Component create a Card by anime
+//==========================
 function AnimeCard({anime}) {
-    console.log(anime)
     return (
         <article className="anime-card">
             <a href={anime.url}
                 target="_blank"
-                rel="noreferer">
+                rel="noreferrer">
                 <figure>
                     <img 
                     src={anime.image_url}
-                    alt="Anime Image"/>
+                    alt={anime.title}/>
                 </figure>
-                <h3>{anime.tittle}</h3>
+                <h3>{anime.title}</h3>
             </a>
         </article>
     )

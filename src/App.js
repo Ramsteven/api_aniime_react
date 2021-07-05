@@ -1,33 +1,68 @@
 import {useState, useEffect} from 'react'
 import Header from "./components/Header"
-import Sidebar from "./components/Sidebar"
+import Sidebar from "./components/Slider"
 import MainContent from "./components/MainContent"
+import {getTopAnimes, getSearchAnimes } from "./services/animes"
+
 
 function App() { 
   const [animeList, setAnimeList] = useState([])
   const [topAnime, setTopAnime] = useState([])
   const [search, setSearch] = useState("")
+  const [message, setmessage] = useState("")
 
-  const GetTopAnime = async () => {
-    const temp = await fetch('https://api.jikan.moe/v3/top/anime/1/bypopularity')
-    .then(res => res.json());
-    console.log(temp.top.slice(0,5))
-    setTopAnime(temp.top.slice(0, 5));
+  //==========================
+  // Function to get top 10 animes
+  //==========================
+  const TopAnime = async () => {
+    const responseJson = await getTopAnimes()
+    setTopAnime(responseJson);
   }
 
+  
+  //==========================
+  // Function to handle event enter
+  //==========================
   const HandleSearch = e => {
     e.preventDefault();
     FetchAnime(search);
   }
 
+  //==========================
+  // Function to fetch with input
+  //==========================
   const FetchAnime = async (query) => {
-    const temp = await fetch(`https://api.jikan.moe/v3/search/anime?q=${query}&order_by=title&sort=asc&limit=10`)
-    .then(res => res.json());
-    setAnimeList(temp.results);
+    const response = await getSearchAnimes(query)
+    Score(response)
+    setAnimeList(response);
   }
 
+  //==========================
+  // Function to calculate score and set message
+  //==========================
+  const Score = topAnime => { 
+    console.log(topAnime)
+    let aux = 0, counter = 0;
+    let result = "";
+    topAnime.forEach(element => { aux += element.score; counter += 1; console.log(element.score)})
+    let average = aux/counter
+    if (counter > 0) {
+      if (average < 5){
+        result = "I do notrecommend it."
+      }
+      else if(average >= 5 && average < 8){
+        result = "You may have fun."
+      }
+      else if(average > 8){
+        result = "Great, this is one of the best anime"
+      }
+      setmessage(result)
+    }
+
+};
+
   useEffect(() => {
-    GetTopAnime();
+    TopAnime();
     console.log("Top Anime")
   }, [])
 
@@ -43,7 +78,8 @@ function App() {
             HandleSearch= {HandleSearch}
             search={search}
             setSearch={setSearch}
-            animeList={animeList} 
+            animeList={animeList}
+            message = {message} 
         />
 
       </div>
