@@ -1,5 +1,9 @@
 import React from 'react'
 
+//==========================
+// Component to handle slider top 10
+//==========================
+
 function Slider({topAnime}) {
     return (
         <div className="container">
@@ -7,22 +11,22 @@ function Slider({topAnime}) {
             <div className="slider">
                 <div className="slide-track">
                     {topAnime.map(anime => (
-                        <div className="slide">
+                        <div className="slide" key={anime.rank}>
                             <a href={anime.url}
                                 target="_blank"
                                 rel="noreferrer"
-                                key={anime.mal_id}>
-                                <img src={anime.image_url}  alt="" key={anime.mal_id}/>
+                                >
+                                <img src={anime.image_url}  alt="" />
                             </a>
                         </div>
                         ))}
                     {topAnime.map(anime => (
-                        <div className="slide">
+                        <div className="slide" key={anime.rank}>
                             <a href={anime.url}
                                 target="_blank"
                                 rel="noreferrer"
-                                key={anime.mal_id}>
-                                <img src={anime.image_url}  alt="" key={anime.mal_id}/>
+                                >
+                                <img src={anime.image_url}  alt="" />
                             </a>
                         </div>
                         ))}

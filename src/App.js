@@ -37,7 +37,7 @@ function App() {
       Score(response)
       setAnimeList(response);
     }else {
-      alert("dont found anything")
+      alert("We dont found anything")
     }
   }
 
@@ -48,7 +48,7 @@ function App() {
     let aux = 0, counter = 0;
     let result = "";
     if (topAnime){
-      topAnime.forEach(element => { aux += element.score; counter += 1; console.log(element.score)})
+      topAnime.forEach(element => { aux += element.score; counter += 1;})
       let average = aux/counter
       if (counter > 0) {
         if (average < 5){
@@ -70,7 +70,6 @@ function App() {
 
   useEffect(() => {
     TopAnime();
-    console.log("Top Anime")
   }, [])
 
 
