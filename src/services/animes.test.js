@@ -33,7 +33,6 @@ describe('the funtion should get a result',() => {
     it('must return content related', async () => {
         const data = await getSearchAnimes("naruto")
         const title = data.results[0].title
-        expect(title).toMatch()
         );
     })
 })

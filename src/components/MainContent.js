@@ -15,10 +15,10 @@ function MainContent(props) {
                     value={props.search}
                     onChange= {e => props.setSearch(e.target.value)}/>
                 </form>
-            </div>
-            <h2>{props.message}</h2>
-            <div className="anime-list">
                 
+            </div>
+            <h3 className="messageSearch">{props.message}</h3>
+            <div className="anime-container">
                 {props.animeList.map(anime =>(
                     <AnimeCard
                         anime={anime}

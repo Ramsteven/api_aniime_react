@@ -33,32 +33,39 @@ function App() {
   //==========================
   const FetchAnime = async (query) => {
     const response = await getSearchAnimes(query)
-    Score(response)
-    setAnimeList(response);
+    if (response) {
+      Score(response)
+      setAnimeList(response);
+    }else {
+      alert("dont found anything")
+    }
   }
 
   //==========================
   // Function to calculate score and set message
   //==========================
   const Score = topAnime => { 
-    console.log(topAnime)
     let aux = 0, counter = 0;
     let result = "";
-    topAnime.forEach(element => { aux += element.score; counter += 1; console.log(element.score)})
-    let average = aux/counter
-    if (counter > 0) {
-      if (average < 5){
-        result = "I do notrecommend it."
+    if (topAnime){
+      topAnime.forEach(element => { aux += element.score; counter += 1; console.log(element.score)})
+      let average = aux/counter
+      if (counter > 0) {
+        if (average < 5){
+          result = "I do notrecommend it."
+        }
+        else if(average >= 5 && average < 8){
+          result = "You may have fun."
+        }
+        else if(average > 8){
+          result = "Great, this is one of the best anime"
+        }
+        setmessage(result)
       }
-      else if(average >= 5 && average < 8){
-        result = "You may have fun."
-      }
-      else if(average > 8){
-        result = "Great, this is one of the best anime"
-      }
+    }else{
+      result = "nothing there"
       setmessage(result)
     }
-
 };
 
   useEffect(() => {
