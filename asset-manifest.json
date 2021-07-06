@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/api_aniime_react/static/css/main.9bdb5131.chunk.css",
+    "main.js": "/api_aniime_react/static/js/main.e07eb872.chunk.js",
+    "main.js.map": "/api_aniime_react/static/js/main.e07eb872.chunk.js.map",
+    "runtime-main.js": "/api_aniime_react/static/js/runtime-main.91875ecb.js",
+    "runtime-main.js.map": "/api_aniime_react/static/js/runtime-main.91875ecb.js.map",
+    "static/js/2.992f825c.chunk.js": "/api_aniime_react/static/js/2.992f825c.chunk.js",
+    "static/js/2.992f825c.chunk.js.map": "/api_aniime_react/static/js/2.992f825c.chunk.js.map",
+    "index.html": "/api_aniime_react/index.html",
+    "static/css/main.9bdb5131.chunk.css.map": "/api_aniime_react/static/css/main.9bdb5131.chunk.css.map",
+    "static/js/2.992f825c.chunk.js.LICENSE.txt": "/api_aniime_react/static/js/2.992f825c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.91875ecb.js",
+    "static/js/2.992f825c.chunk.js",
+    "static/css/main.9bdb5131.chunk.css",
+    "static/js/main.e07eb872.chunk.js"
+  ]
+}
